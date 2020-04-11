@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -13,18 +15,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
-  },
   "bugs": {
     "url": "https://github.com/ivoreroman/typist/issues"
   },
   "homepage": "https://github.com/ivoreroman/typist#readme",
   "dependencies": {
+    "mongodb": "^3.5.5",
     "next": "^9.3.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "swr": "^0.2.0"
   }
 }
