@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ivoreroman/typist#readme",
   "dependencies": {
+    "@google-cloud/speech": "^3.6.0",
     "mongodb": "^3.5.5",
     "next": "^9.3.4",
     "next-connect": "^0.6.1",
