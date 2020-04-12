@@ -42,7 +42,7 @@ const Recorder = () => {
         };
         mediaRecorder.onstop = function(evt) {
           let blob = new Blob(chunks.current, {
-            type: "audio/flac; codecs=flac"
+            type: "audio/ogg; codecs=opus"
           });
           setSrc(URL.createObjectURL(blob));
         };
@@ -59,7 +59,7 @@ const Recorder = () => {
       <button onClick={onRecordClick}>{isRecording ? "Stop" : "Record"}</button>
       {src && !isRecording && (
         <audio controls>
-          <source src={src} type="audio/flac" />
+          <source src={src} type="audio/ogg" />
         </audio>
       )}
     </>
