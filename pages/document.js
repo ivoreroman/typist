@@ -27,11 +27,14 @@ const DocumentPage = () => {
       mediaRecorder.ondataavailable = function(evt) {
         chunks.current.push(evt.data);
       };
-      mediaRecorder.onstop = function(evt) {
+      mediaRecorder.onstop = async function(evt) {
         let blob = new Blob(chunks.current, {
           type: 'audio/flac',
         });
         setSrc(URL.createObjectURL(blob));
+        const response = await postDoc(blob);
+        console.log('response if any');
+        console.log(response);
       };
 
       setMediaRecorder(mediaRecorder);
@@ -57,6 +60,18 @@ const DocumentPage = () => {
 
   if (error) return <div>failed to load</div>;
   if (!fetchedDoc) return <div>loading...</div>;
+
+  async function postDoc(doc) {
+    const formData = new FormData();
+    formData.append('audio', doc);
+    const response = await fetch('https://dev-api.nicetalks.co/v1/audio', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await response.json();
+    return data;
+  }
+
   return (
     <>
       <div>
