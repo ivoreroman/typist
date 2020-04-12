@@ -8,8 +8,8 @@ const handler = nextConnect();
 
 const config = {
     encoding: 'LINEAR16',
-    sampleRateHertz: 22257,
     languageCode: 'en-US',
+    sampleRateHertz: 41380,
 };
 
 async function getTranscript(audio) {
@@ -31,10 +31,10 @@ async function getTranscript(audio) {
 }
 
 handler.post(async (req, res) => {
-    const audioFile = '/Users/ivoreyes/Downloads/taunt.wav';
-    const file = fs.readFileSync(audioFile).toString('base64');
+    const audioFile = '/Users/ivoreyes/Downloads/audio.wav';
+    const audio = fs.readFileSync(audioFile).toString('base64');
     try {
-        const transcription = await getTranscript(file);
+        const transcription = await getTranscript(audio);
         console.log(`Transcription: ${transcription}`);
         return res.status(201).json({text: transcription});
     } catch (e) {
