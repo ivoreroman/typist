@@ -61,6 +61,8 @@ const DocumentPage = () => {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 
+  console.log('data');
+  console.log(data);
   const fetchedDoc = data.foundDocument;
   async function postDoc(doc) {
     const formData = new FormData();
@@ -89,11 +91,6 @@ const DocumentPage = () => {
       <div>
         <code>{fetchedDoc && fetchedDoc.text}</code>
       </div>
-      {src && !isRecording && (
-        <audio controls>
-          <source src={src} type="audio/flac" />
-        </audio>
-      )}
     </>
   );
 };
