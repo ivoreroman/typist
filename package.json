@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/ivoreroman/typist#readme",
   "dependencies": {
+    "getusermedia": "^2.0.1",
+    "hark": "^1.2.3",
     "mongodb": "^3.5.5",
     "next": "^9.3.4",
     "next-connect": "^0.6.1",
