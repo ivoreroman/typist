@@ -56,11 +56,12 @@ const DocumentPage = () => {
     });
   }, []);
 
-  const {data: fetchedDoc, error} = useSWR('/api/documents');
+  const {data, error} = useSWR('/api/documents');
 
   if (error) return <div>failed to load</div>;
-  if (!fetchedDoc) return <div>loading...</div>;
+  if (!data) return <div>loading...</div>;
 
+  const fetchedDoc = data.foundDocument;
   async function postDoc(doc) {
     const formData = new FormData();
     formData.append('audio', doc);
@@ -69,17 +70,24 @@ const DocumentPage = () => {
       body: formData,
     });
     const data = await response.json();
+    const localSave = await fetch('api/documents', {
+      method: 'POST',
+      body: JSON.stringify({
+        text: data.transcript,
+      }),
+    });
+
     return data;
   }
 
   return (
     <>
       <div>
-        <h1>Transcript for meeting {fetchedDoc.id}</h1>
-        <em className="pulled-right">{fetchedDoc.createdAt}</em>
+        <h1>Transcript for meeting {fetchedDoc && fetchedDoc.id}</h1>
+        <em className="pulled-right">{fetchedDoc && fetchedDoc.createdAt}</em>
       </div>
       <div>
-        <code>{fetchedDoc.doc}</code>
+        <code>{fetchedDoc && fetchedDoc.text}</code>
       </div>
       {src && !isRecording && (
         <audio controls>
