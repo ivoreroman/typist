@@ -1,0 +1,46 @@
+body {
+  font-family: 'SF Pro Text', 'SF Pro Icons', system-ui, 'Helvetica Neue', 'Helvetica';
+  font-size: 0.875rem;
+  padding: 20px 20px 60px 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.5rem;
+}
+
+body p {
+  margin: 0.6rem 0 1.1rem 0;
+}
+
+body ul li {
+  list-style-type: '-';
+  margin: 0.4rem 0 0.4rem 0;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  text-decoration: underline
+}
+
+a:visited {
+  color: blue;
+}
+
+code {
+  white-space: pre-line;
+}
+
+.pulled-right {
+  display: block;
+  text-align: right;
+  width: 100%;
+}
+
+heading {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: block;
+}
