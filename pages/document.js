@@ -28,7 +28,9 @@ const Recorder = () => {
   };
 
   useEffect(() => {
-    audioCtx.current = new (window.AudioContext || window.webkitAudioContext)();
+    audioCtx.current = new (window.AudioContext || window.webkitAudioContext)({
+      sampleRate: 44100
+    });
     destination.current = audioCtx.current.createMediaStreamDestination();
     chunks.current = [];
     navigator.mediaDevices
@@ -42,7 +44,7 @@ const Recorder = () => {
         };
         mediaRecorder.onstop = function(evt) {
           let blob = new Blob(chunks.current, {
-            type: "audio/flac; codecs=flac"
+            type: "audio/flac"
           });
           setSrc(URL.createObjectURL(blob));
         };
